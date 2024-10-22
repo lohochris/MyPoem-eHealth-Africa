@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Challenge: Colorful Creature</title>
+    </head>
+    <body>
+        <h1>The Coolest Creature</h1>
+
+        <!-- Image picker -->
+        <input type="file" accept="image/*" id="imagePicker" />
+        <br><br>
+        <img id="creatureImage" src="">
+        
+        <!-- Paragraph describing the creature -->
+        <p>The <em id="creatureName"></em> is awesome because <strong id="creatureDescription"></strong>.</p>
+
+        <!-- Script to handle image upload -->
+        <script>
+            document.getElementById('imagePicker').addEventListener('change', function(event) {
+                const reader = new FileReader();
+                reader.onload = function(){
+                    const imgElement = document.getElementById('creatureImage');
+                    imgElement.src = reader.result;
+                    imgElement.style.display = 'block';
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            });
+
+            // Fill in the name and description of the creature
+            document.getElementById('creatureName').textContent = "chameleon";
+            document.getElementById('creatureDescription').textContent = "it can change colors to blend in with its surroundings, making it a master of camouflage!";
+        </script>
+    </body>
+</html>
